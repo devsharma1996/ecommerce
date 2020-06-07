@@ -4,7 +4,7 @@ import com.example.ecommerce.exceptions.UserServiceException;
 import com.example.ecommerce.io.repositories.UserRepository;
 import com.example.ecommerce.io.entity.UserEntity;
 import com.example.ecommerce.service.UserService;
-import com.example.ecommerce.shared.MailTrap;
+import com.example.ecommerce.shared.EmailSender;
 import com.example.ecommerce.shared.Utils;
 import com.example.ecommerce.shared.dto.AddressDTO;
 import com.example.ecommerce.shared.dto.UserDto;
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Autowired
-    MailTrap mailTrap;
+    EmailSender emailSender;
 
     @Autowired
     Utils utils;
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
         UserDto returnValue=modelMapper.map(storedUserDetails,UserDto.class);
 
         // Send an email to user to verify email address
-        mailTrap.verifyEmail(returnValue);
+        emailSender.verifyEmail(returnValue);
 
 
         return returnValue;

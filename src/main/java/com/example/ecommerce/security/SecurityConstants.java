@@ -15,24 +15,10 @@ public class SecurityConstants {
         return appProperties.getTokenSecret();
     }
 
-    public static String getSmtpHost(){
+    public static String getSendGridApiKey(){
         AppProperties appProperties=(AppProperties) SpringApplicationContext.getBean("appProperties");
-        return appProperties.getSmtpHost();
+        return appProperties.getSendGridApiKey();
     }
 
-    public static String getSmtpPort(){
-        AppProperties appProperties=(AppProperties) SpringApplicationContext.getBean("appProperties");
-        return appProperties.getSmtpPort();
-    }
-
-    public static String getSmtpUsername(){
-        AppProperties appProperties=(AppProperties) SpringApplicationContext.getBean("appProperties");
-        return appProperties.getSmtpUsername();
-    }
-
-    public static String getSmtpPassword(){
-        AppProperties appProperties=(AppProperties) SpringApplicationContext.getBean("appProperties");
-        return appProperties.getSmtpPassword();
-    }
 
 }
