@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>ecommerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<!-- Packaging should be changed to war when generating war file out of compilation which is to be deployed in tomcat separately-->
+	<!-- Packaging should be changecld to war when generating war file out of compilation which is to be deployed in tomcat separately-->
 <!--	<packaging>war</packaging>-->
 	<name>ecommerce</name>
 	<description>Demo project for Spring Boot</description>
@@ -120,11 +120,16 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>com.google.cloud.tools</groupId>
-				<artifactId>appengine-maven-plugin</artifactId>
-				<version>1.3.2</version>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>com.heroku.sdk</groupId>-->
+<!--				<artifactId>heroku-maven-plugin</artifactId>-->
+<!--				<version>3.0.2</version>-->
+<!--				<configuration>-->
+<!--					<buildpacks>-->
+<!--						<buildpack>heroku/jvm</buildpack>-->
+<!--					</buildpacks>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
