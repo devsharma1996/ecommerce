@@ -12,7 +12,7 @@
 	<artifactId>ecommerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<!-- Packaging should be changecld to war when generating war file out of compilation which is to be deployed in tomcat separately-->
-<!--	<packaging>war</packaging>-->
+	<packaging>war</packaging>
 	<name>ecommerce</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -70,36 +70,23 @@
 			<artifactId>spring-boot-starter-hateoas</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
 		<!-- Currently when project is build apachae tomcat will be built in  into our project  and this is what makes our application start up and run within the built in  apache tomcat-->
 		<!-- Now we eill specify the  dependecy for the apache tomcat will be provided not at the compile time but at the run time -->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-tomcat</artifactId>-->
-<!--			<scope>provided</scope> &lt;!&ndash; Provided scope means dependecy will be provided at the runtime rather then compile time&ndash;&gt;-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope> <!-- Provided scope means dependecy will be provided at the runtime rather then compile time-->
 		</dependency>
 
-		<dependency>
-			<groupId>com.sendgrid</groupId>
-			<artifactId>sendgrid-java</artifactId>
-			<version>4.5.0</version>
-		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-gcp-starter</artifactId>
-			<version>1.0.0.RELEASE</version>
-		</dependency>
 
-		<dependency>
-			<groupId>com.google.firebase</groupId>
-			<artifactId>firebase-admin</artifactId>
-			<version>6.11.0</version>
-		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

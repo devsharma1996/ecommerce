@@ -2,6 +2,7 @@ package com.example.ecommerce.shared;
 
 import com.example.ecommerce.security.SecurityConstants;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Component;
@@ -38,15 +39,21 @@ public class Utils {
     }
 
     public boolean hasTokenExpired(String token){
-        token = token.replace(SecurityConstants.TOKEN_PREFIX, "");
+        boolean returnValue = false;
 
-        Claims claims = Jwts.parser()
-                .setSigningKey( SecurityConstants.getTokenSecret() )
-                .parseClaimsJws( token ).getBody();
+        try {
+            Claims claims = Jwts.parser().setSigningKey(SecurityConstants.getTokenSecret()).parseClaimsJws(token)
+                    .getBody();
 
-        Date tokenExpirationDate=claims.getExpiration();
-        Date todayDate=new Date();
-        return tokenExpirationDate.before(todayDate);
+            Date tokenExpirationDate = claims.getExpiration();
+            Date todayDate = new Date();
+
+            returnValue = tokenExpirationDate.before(todayDate);
+        } catch (ExpiredJwtException ex) {
+            returnValue = true;
+        }
+
+        return returnValue;
     }
 
     public String generateEmailVerificationToken(String userId){
@@ -54,6 +61,16 @@ public class Utils {
                 .setSubject(userId)
                 .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SecurityConstants.getTokenSecret() )
+                .compact();
+        return token;
+    }
+
+    public String generatePasswordResetToken(String userId)
+    {
+        String token = Jwts.builder()
+                .setSubject(userId)
+                .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.PASSWORD_RESET_EXPIRATION_TIME))
+                .signWith(SignatureAlgorithm.HS512, SecurityConstants.getTokenSecret())
                 .compact();
         return token;
     }

@@ -14,9 +14,20 @@ public class AppProperties {
         return env.getProperty("tokenSecret");
     }
 
-    public String getSendGridApiKey(){
-        return env.getProperty("sendGridApiKey");
+    public String getSmtpHost(){
+        return env.getProperty("spring.mail.host");
     }
 
+    public String getSmtpPort(){
+        return env.getProperty("spring.mail.port");
+    }
+
+    public String getSmtpUsername(){
+        return env.getProperty("spring.mail.username");
+    }
+
+    public String getSmtpPassword(){
+        return env.getProperty("spring.mail.password");
+    }
 
 }
